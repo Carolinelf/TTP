@@ -18,7 +18,7 @@
       <a class="navbar-brand" href="#">The Perfect Pour</a>
     </div>
     <ul class="nav navbar-nav navbar-right">
-           <li><a href="index.php?module=auth&page=register" class="navbar-link">Login/Sign Up</a> </li>
+           <li><a href="index.php?module=auth&page=login" class="navbar-link">Login/Sign Up</a> </li>
            <li><a href="#" class="navbar-link"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
            <li><a href="#" class="navbar-link">Store</a></li>
        </ul>
@@ -28,7 +28,7 @@
       <div class="container">
         <h1>Need Coffee?</h1>
         <p class="tagline">We'll help you find the best!</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Sign Up »</a></p>
+        <p><a class="btn btn-primary btn-lg" href="index.php?module=auth&page=register" role="button">Sign Up »</a></p>
       </div>
     </div>
    

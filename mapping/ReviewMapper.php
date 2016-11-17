@@ -21,17 +21,17 @@ class ReviewMapper {
                 $review->setDate($date);
             }
         }
-        if (array_key_exists('coffeeType', $properties)) {
-            $review->setCoffeeType($properties['coffeeType']);
+        if (array_key_exists('coffee_type', $properties)) {
+            $review->setCoffeeType($properties['coffee_type']);
         }
         if (array_key_exists('comment', $properties)) {
             $review->setComment($properties['comment']);
         }
-        if (array_key_exists('userId', $properties)) {
-            $review->setUserId($properties['userId']);
+        if (array_key_exists('user_id', $properties)) {
+            $review->setUserId($properties['user_id']);
         }
-        if (array_key_exists('cafeId', $properties)) {
-            $review->setCafeId($properties['cafeId']);
+        if (array_key_exists('cafe_id', $properties)) {
+            $review->setCafeId($properties['cafe_id']);
         }
         if (array_key_exists('status', $properties)) {
             $review->setStatus($properties['status']);

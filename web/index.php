@@ -58,6 +58,7 @@ final class Index {
             'Review' => '../model/Review.php',
             'LoginValidator' => '../validation/LoginValidator.php',
             'RegisterValidator' => '../validation/RegisterValidator.php',
+            'ReviewValidator' => '../validation/ReviewValidator.php',
             'Utils' => '../util/Utils.php',
             'HeadTemplate' => '../layout/HeadTemplate.php'
         );

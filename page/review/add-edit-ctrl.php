@@ -2,6 +2,8 @@
 
 $headTemplate = new HeadTemplate('Add/Edit | The Perfect Pour', 'Edit or add a Review');
 $coffeeTypes = ['','Long Black', 'Flat White', 'Cappacino', 'Chemex'];
+$ratings = ['','1', '2', '3', '4', '5'];
+
 $errors = array();
 $todo = null;
 $edit = array_key_exists('id', $_GET);
@@ -17,9 +19,10 @@ if ($edit) {
     $review->setCoffeeType('');
     $review->setComment();
     $review->setUserId();
-    $review->setCafeId();
+    $cafeId = 1;
+    $review->setCafeId($cafeId);
     $review->setStatus('pending');
-    $review->setRating();
+    $review->setRating('');
 }
 
 //if (array_key_exists('cancel', $_POST)) {
@@ -38,7 +41,7 @@ if (array_key_exists('save', $_POST)) {
        
     // map
     ReviewMapper::map($review, $data);
-    // validate
+//    // validate
     $errors = ReviewValidator::validate($review);
     // validate
     if (empty($errors)) {

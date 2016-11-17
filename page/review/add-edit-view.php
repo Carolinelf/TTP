@@ -53,11 +53,16 @@ function error_field($title, array $errors) {
                    class="text<?php echo error_field('cafe_id', $errors); ?>"/>
             </div>  
             
-        <div class="field">
             <label>Rating:</label>
-            <input type="text" name="review[rating]" value="<?php echo Utils::escape($review->getRating()); ?>"
-                   class="text<?php echo error_field('rating', $errors); ?>"/>
-        </div>
+    <select name="review[rating]">
+    <?php foreach ($ratings as $rating): ?>
+        <option value="<?php echo $rating; ?>"
+                <?php if ($review->getRating() == $rating): ?>
+                    selected="selected"
+                <?php endif; ?>
+                ><?php echo $rating; ?></option>
+    <?php endforeach; ?>    
+        </select>
         <div class="field">
             <label>Review:</label>
             <textarea name="review[comment]" value="<?php echo Utils::escape($review->getComment()); ?>"
