@@ -36,7 +36,7 @@ $user = null;
     // map
     UserMapper::map($user, $data);
     // validate
-    $errors = UserValidator::validate($user);
+    $errors = LoginValidator::validate($user);
     // validate
     if (empty($errors)) {
         // save

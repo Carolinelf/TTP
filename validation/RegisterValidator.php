@@ -1,25 +1,28 @@
 <?php
 /**
- * Validator for {@link Booking}.
- * @see BookingMapper
+ * Validator for {@link User}.
+ * @see UserMapper
  */
-final class BookingValidator {
+final class RegisterValidator {
 
     private function __construct() {
     }
 
     /**
-     * Validate the given {@link Booking} instance.
-     * @param Booking $booking {@link Booking} instance to be validated
+     * Validate the given {@link User} instance.
+     * @param User $user {@link User} instance to be validated
      * @return array array of {@link Error} s
      */
-    public static function validate(Booking $booking) {
+    public static function validate(User $user) {
         $errors = array();
-        if (!$booking->getFlightName()) {
-            $errors[] = new Error('flight_name', 'Empty or invalid Flight Name.');
+        if (!$user->getUsername()) {
+            $errors[] = new Error('username', 'Empty or invalid Username.');
         }
-        if (!$booking->getFlightDate()) {
-            $errors[] = new Error('flight_date', 'Empty or invalid Flight Date.');
+        if (!$user->getPassword()) {
+            $errors[] = new Error('password', 'Empty or invalid Password.');
+        }
+        if (!$user->getEmail()) {
+            $errors[] = new Error('email', 'Empty or invalid Email.');
         }
         return $errors;
     }
@@ -47,11 +50,11 @@ final class BookingValidator {
     }
 
     private static function isValidStatus($status) {
-        return in_array($status, Booking::allStatuses());
+        return in_array($status, User::allStatuses());
     }
 
     private static function isValidPriority($priority) {
-        return in_array($priority, Booking::allPriorities());
+        return in_array($priority, User::allPriorities());
     }
 
 }

@@ -35,8 +35,7 @@ if ($edit) {
     UserMapper::map($user, $data);
 
     // validate
-    $errors = array();
-    //UserValidator::validate($user);
+    $errors = RegisterValidator::validate($user);
     // validate
     if (empty($errors)) {
         // save

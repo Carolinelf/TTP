@@ -56,8 +56,8 @@ final class Index {
             'User' => '../model/User.php',
             'Cafe' => '../model/Cafe.php',
             'Review' => '../model/Review.php',
-            'UserValidator' => '../validation/CafeValidator.php',
-            'UserValidator' => '../validation/UserValidator.php',
+            'LoginValidator' => '../validation/LoginValidator.php',
+            'RegisterValidator' => '../validation/RegisterValidator.php',
             'Utils' => '../util/Utils.php',
             'HeadTemplate' => '../layout/HeadTemplate.php'
         );

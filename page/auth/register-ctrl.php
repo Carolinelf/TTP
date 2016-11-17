@@ -35,8 +35,7 @@ $edit = array_key_exists('id', $_GET);
     UserMapper::map($user, $data);
 
     // validate
-    $errors = array();
-    //UserValidator::validate($user);
+    $errors = RegisterValidator::validate($user);
     // validate
     if (empty($errors)) {
         // save
