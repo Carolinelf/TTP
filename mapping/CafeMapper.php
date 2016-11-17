@@ -24,8 +24,8 @@ class CafeMapper {
         if (array_key_exists('overview', $properties)) {
             $cafe->setOverview($properties['overview']);
         }
-        if (array_key_exists('verage_rating', $properties)) {
-            $cafe->getAverage_rating($properties['verage_rating']);
+        if (array_key_exists('average_rating', $properties)) {
+            $cafe->getAverage_rating($properties['average_rating']);
         }
     }
 }
