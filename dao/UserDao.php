@@ -27,7 +27,7 @@ class UserDao {
      * @return User User or <i>null</i> if not found
      */
     public function findById($id) {
-        $row = $this->query('SELECT * FROM users WHERE privilege != "admin" AND id = ' . (int) $id)->fetch();
+        $row = $this->query('SELECT * FROM users WHERE privilege = "user" AND id = ' . (int) $id)->fetch();
         if (!$row) {
             return null;
         }
@@ -35,15 +35,15 @@ class UserDao {
         UserMapper::map($user, $row);
         return $user;
     }
-//        public function findByCredentials($email, $password) {
-//        $row = $this->query('SELECT * FROM users WHERE privilege != "admin" AND id = ' . (int) $id)->fetch();
-//        if (!$row) {
-//            return null;
-//        }
-//        $user = new User();
-//        UserMapper::map($user, $row);
-//        return $user;
-//  }
+    public function findByCredentials($username, $password) {
+        $row = $this->query("SELECT * FROM users WHERE username = '$username' AND password = '$password'")->fetch();
+        if (!$row) {
+            return null;
+        }
+        $user = new User();
+        UserMapper::map($user, $row);
+        return $user;
+  }
     /**
      * Save {@link User}.
      * @param User $user {@link User} to be saved
@@ -88,28 +88,6 @@ class UserDao {
         }
         return $this->db;
     }
-//    private function getFindSql(UserSearchCriteria $search = null) {
-//        $sql = 'SELECT * FROM user WHERE deleted = 0 ';
-//        $orderBy = ' priority, due_on';
-//        if ($search !== null) {
-//            if ($search->getStatus() !== null) {
-//                $sql .= 'AND status = ' . $this->getDb()->quote($search->getStatus());
-//                switch ($search->getStatus()) {
-//                    case User::STATUS_PENDING:
-//                        $orderBy = 'due_on, priority';
-//                        break;
-//                    case User::STATUS_DONE:
-//                    case User::STATUS_VOIDED:
-//                        $orderBy = 'due_on DESC, priority';
-//                        break;
-//                    default:
-//                        throw new Exception('No order for status: ' . $search->getStatus());
-//                }
-//            }
-//        }
-//        $sql .= ' ORDER BY ' . $orderBy;
-//        return $sql;
-//    }
     /**
      * @return User
      * @throws Exception
@@ -136,7 +114,7 @@ class UserDao {
                 username = :username,
                 password = :password,
                 email = :email,
-                privilege = :privilege,
+                privilege = :privilege
             WHERE
                 id = :id';
         return $this->execute($sql, $user);
@@ -164,7 +142,9 @@ class UserDao {
             ':email' => $user->getEmail(),
             ':privilege' => $user->getPrivilege()
         );
-        
+//        var_dump($user); echo'<br>';
+//        var_dump($params);
+//        die();
         return $params;
     }
     private function executeStatement(PDOStatement $statement, array $params) {

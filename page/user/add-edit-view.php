@@ -28,6 +28,7 @@ function error_field($title, array $errors) {
     <?php endforeach; ?>
 </ul>
 <?php endif; ?>
+ 
 
 <form action="#" method="post">
     <fieldset>

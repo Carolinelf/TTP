@@ -7,7 +7,6 @@ class User {
     private $password;
     private $email;
     private $privilege;
-    private $reviewId;
     
     function getId() {
         return $this->id;
@@ -29,10 +28,6 @@ class User {
         return $this->privilege;
     }
 
-    function getReviewId() {
-        return $this->reviewId;
-    }
-
     function setId($id) {
         $this->id = $id;
     }
@@ -51,9 +46,5 @@ class User {
 
     function setPrivilege($privilege) {
         $this->privilege = $privilege;
-    }
-
-    function setReviewId($reviewId) {
-        $this->reviewId = $reviewId;
     }
 }

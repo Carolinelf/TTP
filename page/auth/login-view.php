@@ -1,25 +1,46 @@
 <?php
 
-require 'partials/header.php';
-
+function error_field($title, array $errors) {
+    foreach ($errors as $error) {
+        /* @var $error Error */
+        if ($error->getSource() == $title) {
+            return ' error-field';
+        }
+    }
+    return '';
+}
+/* @var $user Booking */
 ?>
-        <div class="container">
-                <form class="form-signin" action="" method="POST">
-                <h2 class="form-signin-heading">Please sign in</h2>
-                <label for="inputUsername" class="sr-only">Email address</label>
-                <input id="inputUsername" class="form-control" name="username" placeholder="Username">
-                <label for="inputPassword" class="sr-only">Password</label>
-                <input id="inputPassword" class="form-control" type="password" name="password" placeholder="Password">
-                <?php if(isset($error)){
-                    echo $error;
-                } ?>
-                 <label>
-                    <input type="checkbox" name="remember-me"> Remember Me?
-                </label>
-                <input class="btn btn-lg btn-primary btn-block" name="submit" type="submit">
-            </form>
-        </div>
-    
-    <?php 
-    include 'partials/footer.php';
 
+<h1> Log In <a href="index.php?module=auth&page=register">Sign Up</a></h1>
+
+<?php if (!empty($errors)): ?>
+<ul class="errors">
+    <?php foreach ($errors as $error): ?>
+        <?php /* @var $error Error */ ?>
+        <li><?php echo $error->getMessage(); ?></li>
+    <?php endforeach; ?>
+</ul>
+<?php endif; ?>
+ 
+
+<form action="#" method="post">
+    <fieldset>
+        <div class="field">
+            <label>Username:</label>
+            
+            <input type="text" name="user[username]" value="<?php echo Utils::escape($user->getUsername()); ?>"
+                   class="text<?php echo error_field('username', $errors); ?>"/>
+        </div>
+        <div class="field">
+            <label>Password:</label>
+            
+            <input type="password" name="user[password]" value="<?php echo Utils::escape($user->getPassword()); ?>"
+                   class="text<?php echo error_field('password', $errors); ?>"/>
+        </div>
+ 
+        <div class="wrapper">
+            <input type="submit" name="save" value="<?php echo $edit ? 'EDIT' : 'ADD'; ?>" class="submit" />
+        </div>
+    </fieldset>
+</form>

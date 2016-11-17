@@ -15,14 +15,17 @@ final class UserValidator {
      */
     public static function validate(User $user) {
         $errors = array();
-        if (!$user->getUsername()) {
-            $errors[] = new Error('username', 'Empty or invalid User Name.');
+        if (!$user->getFirstName()) {
+            $errors[] = new Error('first_name', 'Empty or invalid First Name.');
         }
-        if (!$user->getPassword()) {
-            $errors[] = new Error('password', 'Empty or invalid Password.');
+        if (!$user->getLastName()) {
+            $errors[] = new Error('last_name', 'Empty or invalid Last Name.');
         }
         if (!$user->getEmail()) {
             $errors[] = new Error('email', 'Empty or invalid Email.');
+        }
+        if (!$user->getPassword()) {
+            $errors[] = new Error('password', 'Empty or invalid Password.');
         }
         return $errors;
     }

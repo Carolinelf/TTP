@@ -16,7 +16,7 @@ class UserMapper {
             $user->setId($properties['id']);
         }
         if (array_key_exists('username', $properties)) {
-            $user->setUserName($properties['username']);
+            $user->setUsername($properties['username']);
         }
         if (array_key_exists('password', $properties)) {
             $user->setPassword($properties['password']);
