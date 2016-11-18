@@ -3,7 +3,6 @@
 $headTemplate = new HeadTemplate('Sign up | The Perfect Pour', 'Register as a User');
 
 $errors = array();
-$todo = null;
 $edit = array_key_exists('id', $_GET);
 if ($edit) {
     $dao = new UserDao();

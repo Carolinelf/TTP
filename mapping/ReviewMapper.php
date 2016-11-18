@@ -12,14 +12,19 @@ class ReviewMapper {
      */
 
     public static function map(Review $review, array $properties) {
+//         var_dump($review);
+//die();
         if (array_key_exists('id', $properties)) {
             $review->setId($properties['id']);
         }        
+//        if (array_key_exists('date', $properties)) {
+//            $date = self::createDateTime($properties['date']);
+//            if ($date) {
+//                $review->setDate($date);
+//            }
+//        }
         if (array_key_exists('date', $properties)) {
-            $date = self::createDateTime($properties['date']);
-            if ($date) {
-                $review->setDate($date);
-            }
+            $review->setDate($properties['date']);
         }
         if (array_key_exists('coffee_type', $properties)) {
             $review->setCoffeeType($properties['coffee_type']);
@@ -39,6 +44,6 @@ class ReviewMapper {
         if (array_key_exists('rating', $properties)) {
             $review->setRating($properties['rating']);
         }
-  
+ 
     }
 }

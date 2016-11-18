@@ -65,8 +65,8 @@ function error_field($title, array $errors) {
         </select>
         <div class="field">
             <label>Review:</label>
-            <textarea name="review[comment]" value="<?php echo Utils::escape($review->getComment()); ?>"
-                      class="text<?php echo error_field('comment', $errors); ?>"></textarea>
+            <input type="text" name="review[comment]" value="<?php echo Utils::escape($review->getComment()); ?>"
+                      class="text<?php echo error_field('comment', $errors); ?>"/>
         </div>
             
             <div class="wrapper">

@@ -14,10 +14,7 @@
     <ul class="list">
         <?php foreach ($reviews as $review): ?>
             <li>                
-                <h3><a href="<?php echo Utils::createLink('detail', 
-                        array('id' => $review->getId())) ?>"><?php 
-                        echo Utils::escape($review->getCafeId()); ?></a></h3>  
-                
+
                 <p><span class="label">Coffee Type:</span> <?php 
                 echo Utils::escape($review->getCoffeeType()); 
                 ?></p>  
@@ -25,7 +22,7 @@
                 echo Utils::escape($review->getRating()); 
                 ?></p> 
                 <p><span class="label">Date Created:</span> <?php 
-                echo Utils::escape(Utils::formatDate($review->getDate())); 
+                echo Utils::escape($review->getDate()); 
                 ?></p>  
                 <p><span class="label">Review:</span> <?php 
                 echo Utils::escape($review->getComment()); 

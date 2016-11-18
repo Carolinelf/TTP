@@ -5,7 +5,6 @@ $coffeeTypes = ['','Long Black', 'Flat White', 'Cappacino', 'Chemex'];
 $ratings = ['','1', '2', '3', '4', '5'];
 
 $errors = array();
-$todo = null;
 $edit = array_key_exists('id', $_GET);
 if ($edit) {
     $dao = new ReviewDao();
@@ -16,13 +15,12 @@ if ($edit) {
     $date = new DateTime("now");
     $date->setTime(0, 0, 0);
     $review->setDate($date);
-    $review->setCoffeeType('');
-    $review->setComment();
-    $review->setUserId();
+    $review->getComment();
+    $userId = 1;
+    $review->setUserId($userId);
     $cafeId = 1;
     $review->setCafeId($cafeId);
     $review->setStatus('pending');
-    $review->setRating('');
 }
 
 //if (array_key_exists('cancel', $_POST)) {
@@ -38,16 +36,19 @@ if (array_key_exists('save', $_POST)) {
         'rating' => $_POST['review']['rating'],
         'comment' => $_POST['review']['comment']
     );
-       
+    
     // map
     ReviewMapper::map($review, $data);
 //    // validate
     $errors = ReviewValidator::validate($review);
+    
     // validate
     if (empty($errors)) {
         // save
         $dao = new ReviewDao();
         $review = $dao->save($review);
+//        var_dump($review);            
+//        die();
         Flash::addFlash('Review saved successfully.');
         // redirect
         Utils::redirect('list', array('module'=>'review'));

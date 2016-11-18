@@ -16,10 +16,15 @@ class ReviewDao {
     public function find($sql) {
         $result = array();
         foreach ($this->query($sql) as $row) {
+                 
             $review = new Review();
+            
             ReviewMapper::map($review, $row);
+            
             $result[$review->getId()] = $review;
+           
         }
+   
         return $result;
     }
     /**
@@ -43,6 +48,7 @@ class ReviewDao {
     public function save(Review $review) {
         if ($review->getId() === null) {
             return $this->insert($review);
+
         }
         return $this->update($review);
     }
@@ -141,7 +147,7 @@ class ReviewDao {
     private function execute($sql, Review $review) {
         $statement = $this->getDb()->prepare($sql);
         $this->executeStatement($statement, $this->getParams($review));
-        if (!$review->getId()) {
+        if ($review->getId()) {
             return $this->findById($this->getDb()->lastInsertId());
         }
 //        if (!$statement->rowCount()) {
@@ -160,7 +166,8 @@ class ReviewDao {
             ':status' => $review->getStatus(),
             ':rating' => $review->getRating()
         );
-
+//        var_dump($params);
+//        die();
         return $params;
     }
     private function executeStatement(PDOStatement $statement, array $params) {
