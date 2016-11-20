@@ -12,9 +12,11 @@
 <?php if (empty($cafes)): ?>
     <p>No cafes found.</p>
 <?php else: ?>
+    
     <ul class="list">
         <?php foreach ($cafes as $cafe): ?>
-            <li>                
+            
+        <li class="card">                
                 <h3><a href="<?php echo Utils::createLink('detail', 
                         array('id' => $cafe->getId())) ?>"><?php 
                         echo Utils::escape($cafe->getName()); ?></a></h3>  
@@ -27,4 +29,5 @@
             </li>
         <?php endforeach; ?>
     </ul>
+        
 <?php endif; ?>

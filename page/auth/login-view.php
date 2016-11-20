@@ -11,7 +11,7 @@ function error_field($title, array $errors) {
 }
 /* @var $user Booking */
 ?>
-
+<div class="card form">
 <h1> Log In <a href="index.php?module=auth&page=register">Sign Up</a></h1>
 
 <?php if (!empty($errors)): ?>
@@ -24,7 +24,7 @@ function error_field($title, array $errors) {
 <?php endif; ?>
  
 
-<form action="#" method="post">
+<form  action="#" method="post">
     <fieldset>
         <div class="field">
             <label>Username:</label>
@@ -44,3 +44,4 @@ function error_field($title, array $errors) {
         </div>
     </fieldset>
 </form>
+</div>
