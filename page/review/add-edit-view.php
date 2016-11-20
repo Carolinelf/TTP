@@ -16,7 +16,7 @@ function error_field($title, array $errors) {
 }
 /* @var $booking Booking */
 ?>
-
+<div class="card form">
 <h1>
     <?php if ($edit): ?>
         Edit a Review;
@@ -75,3 +75,4 @@ function error_field($title, array $errors) {
         </div>
     </fieldset>
 </form>
+    </div>

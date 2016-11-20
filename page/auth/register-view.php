@@ -11,7 +11,7 @@ function error_field($title, array $errors) {
 }
 /* @var $user Booking */
 ?>
-
+<div class="card form"> 
 <h1><a href="index.php?module=auth&page=login">Log In</a> Sign Up </h1>
 
 <?php if (!empty($errors)): ?>
@@ -50,3 +50,4 @@ function error_field($title, array $errors) {
         </div>
     </fieldset>
 </form>
+</div>
