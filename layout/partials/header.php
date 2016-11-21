@@ -1,3 +1,11 @@
+<?php 
+$username = $_SESSION['username'];
+if(!isset($_SESSION['username'])) {
+$login = '<a href="index.php?module=auth&page=login" class="navbar-link">Login/Sign Up</a> ';
+} else {
+$login = '<a href="index.php?module=auth&page=login?logout" class="navbar-link">Logout</a>';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,10 +23,13 @@
 <nav class="navbar navbar-collapse collapse navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">The Perfect Pour</a>
+      <a class="navbar-brand" href="index.php?module=home">The Perfect Pour</a>
     </div>
     <ul class="nav navbar-nav navbar-right">
-           <li><a href="index.php?module=auth&page=login" class="navbar-link">Login/Sign Up</a> </li>
+        <li><a class="navbar-link"><?php echo "Hello $username"?></a></li>  
+        <li><?php
+            echo "$login";
+            ?></li>
            <li><a href="#" class="navbar-link"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
            <li><a href="#" class="navbar-link">Store</a></li>
        </ul>

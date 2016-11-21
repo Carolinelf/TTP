@@ -106,3 +106,7 @@ h1, h2, h3 {
     margin-top: 5px;
     margin-bottom: 5px;
 }
+
+.nav-pills > li > a {
+  border-radius: 0px;
+}

@@ -2,6 +2,8 @@
 
 class Review {
 
+    const STATUS_PENDING = "PENDING";
+    
     private $id;
     private $date;
     private $coffeeType;

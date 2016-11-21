@@ -26,7 +26,7 @@
                 <p><span class="label">Overview:</span> <?php 
                 echo Utils::escape($cafe->getOverview()); 
                 ?></p>
-            </li>
+                 </li>
         <?php endforeach; ?>
     </ul>
         

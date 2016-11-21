@@ -6,7 +6,7 @@
 //  $todos - TODOs to be displayed
 ?>
 
-<h1>Reviews</h1>
+<h1>Latest Reviews</h1>
 
 <?php if (empty($reviews)): ?>
     <p>No reviews found.</p>
