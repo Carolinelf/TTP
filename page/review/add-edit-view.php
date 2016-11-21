@@ -19,9 +19,9 @@ function error_field($title, array $errors) {
 <div class="card form">
 <h1>
     <?php if ($edit): ?>
-        Edit a Review;
+        Edit Review
     <?php else: ?>
-        Add a Review;
+        Add Review
     <?php endif; ?>
 </h1>
 

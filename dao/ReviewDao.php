@@ -128,18 +128,17 @@ class ReviewDao {
     //$review->setFlightDate(new DateTime());
         $sql = '
             UPDATE review SET
-                id = :id,
                 date = :date,
                 coffee_type = :coffee_type,
                 comment = :comment,
-                user_id = :user_id,
                 cafe_id = :cafe_id,
-                status = :status,
                 rating = :rating
             WHERE
                 id = :id';
+        
         return $this->execute($sql, $review);
     }
+
     /**
      * @return Review
      * @throws Exception
@@ -153,6 +152,7 @@ class ReviewDao {
 //        if (!$statement->rowCount()) {
 //            throw new NotFoundException('Review with ID "' . $review->getId() . '" does not exist.');
 //        }
+
         return $review;
     }
     private function getParams(Review $review) {
@@ -166,8 +166,7 @@ class ReviewDao {
             ':status' => $review->getStatus(),
             ':rating' => $review->getRating()
         );
-//        var_dump($params);
-//        die();
+
         return $params;
     }
     private function executeStatement(PDOStatement $statement, array $params) {

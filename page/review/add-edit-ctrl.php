@@ -23,11 +23,6 @@ if ($edit) {
     $review->setStatus('pending');
 }
 
-//if (array_key_exists('cancel', $_POST)) {
-//    // redirect
-//    Utils::redirect('detail', array('id' => $todo->getId()));
-//} else
-
 if (array_key_exists('save', $_POST)) {
     // for security reasons, do not map the whole $_POST['todo']
     $data = array(
@@ -39,7 +34,7 @@ if (array_key_exists('save', $_POST)) {
     
     // map
     ReviewMapper::map($review, $data);
-//    // validate
+    // validate
     $errors = ReviewValidator::validate($review);
     
     // validate
@@ -47,8 +42,7 @@ if (array_key_exists('save', $_POST)) {
         // save
         $dao = new ReviewDao();
         $review = $dao->save($review);
-//        var_dump($review);            
-//        die();
+
         Flash::addFlash('Review saved successfully.');
         // redirect
         Utils::redirect('list', array('module'=>'review'));

@@ -37,10 +37,10 @@ if (isset($_POST['submit'])) {
         header('Location: index.php');
     }
 
+}
+
     if (isset($_GET['logout'])) {
         session_destroy();
-        header('Location: index.php');
+        header('Location: index.php?module=review&page=list');
     }
-
-}
 

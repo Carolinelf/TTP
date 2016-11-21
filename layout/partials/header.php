@@ -3,7 +3,7 @@ $username = $_SESSION['username'];
 if(!isset($_SESSION['username'])) {
 $login = '<a href="index.php?module=auth&page=login" class="navbar-link">Login/Sign Up</a> ';
 } else {
-$login = '<a href="index.php?module=auth&page=login?logout" class="navbar-link">Logout</a>';
+$login = '<a href="index.php?module=auth&page=login&logout=true" class="navbar-link">Logout</a>';
 }
 ?>
 <!DOCTYPE html>
