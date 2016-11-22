@@ -18,7 +18,7 @@
             
         <li class="card">                
                 <h3><a href="<?php echo Utils::createLink('detail', 
-                        array('id' => $cafe->getId())) ?>"><?php 
+                        array('module' => 'cafe', 'id' => $cafe->getId())) ?>"><?php 
                         echo Utils::escape($cafe->getName()); ?></a></h3>  
                 <p><span class="label">Location:</span> <?php 
                 echo Utils::escape($cafe->getLocation()); 

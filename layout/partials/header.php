@@ -1,8 +1,10 @@
 <?php 
-$username = $_SESSION['username'];
 if(!isset($_SESSION['username'])) {
 $login = '<a href="index.php?module=auth&page=login" class="navbar-link">Login/Sign Up</a> ';
+$callToAct ='<a class="btn btn-primary btn-lg" href="index.php?module=auth&page=register" role="button">Sign Up »</a>';
 } else {
+$username = $_SESSION['username'];
+$greeting = "Hello $username";   
 $login = '<a href="index.php?module=auth&page=login&logout=true" class="navbar-link">Logout</a>';
 }
 ?>
@@ -26,10 +28,8 @@ $login = '<a href="index.php?module=auth&page=login&logout=true" class="navbar-l
       <a class="navbar-brand" href="index.php?module=home">The Perfect Pour</a>
     </div>
     <ul class="nav navbar-nav navbar-right">
-        <li><a class="navbar-link"><?php echo "Hello $username"?></a></li>  
-        <li><?php
-            echo "$login";
-            ?></li>
+        <li><a class="navbar-link"><?php echo "$greeting"?></a></li>  
+        <li><?php echo "$login"; ?></li>
            <li><a href="#" class="navbar-link"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
            <li><a href="#" class="navbar-link">Store</a></li>
        </ul>
@@ -39,7 +39,7 @@ $login = '<a href="index.php?module=auth&page=login&logout=true" class="navbar-l
       <div class="container">
         <h1>Need Coffee?</h1>
         <p class="tagline">We'll help you find the best!</p>
-        <p><a class="btn btn-primary btn-lg" href="index.php?module=auth&page=register" role="button">Sign Up »</a></p>
+        <p><?php echo "$callToAct"; ?></p>
       </div>
     </div>
    
