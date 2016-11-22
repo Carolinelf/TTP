@@ -1,5 +1,5 @@
 <h1>Cafe Detail</h1>
-    <p><span class="label">Cafe Name:</span> <?php // echo Utils::escape($cafe->getName()) ?> </p>
+    <p><span class="label">Cafe Name:</span> <?php echo $cafe->getName() ?> </p>
     <p><span class="label">Location:</span> </p>
     <p><span class="label">Average Rating:</span> </p>
     <p><span class="label">Overview:</span> </p>
