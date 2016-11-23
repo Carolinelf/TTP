@@ -25,7 +25,7 @@
                    <p><span class="label">Review:</span> <?php 
                    echo Utils::escape($review->getComment()); 
                    ?></p> 
-                   <p><a href="index.php?module=review&page=add-edit&id=<?php echo $review->getId()?>">Edit</a> | <a href="index.php?module=review&page=delete&id=<?php echo $review->getId()?>">Delete</a></p>
+<!--                   <p><a href="index.php?module=review&page=add-edit&id=<?php echo $review->getId()?>">Edit</a> | <a href="index.php?module=review&page=delete&id=<?php echo $review->getId()?>">Delete</a></p>-->
                </li>
            <?php endforeach; ?>
        </ul>

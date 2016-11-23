@@ -4,6 +4,6 @@ $headTemplate = new HeadTemplate('Reviews list | The Perfect Pour', 'List of rev
 
 $dao = new ReviewDao();
 
-$sql = 'SELECT id, date, coffee_type, comment, user_id, cafe_id FROM review WHERE status != "deleted"';
+$sql = 'SELECT id, date, coffee_type, comment, rating, user_id, cafe_id FROM review WHERE status != "deleted"';
 $reviews = $dao->find($sql);
 

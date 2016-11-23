@@ -1,5 +1,4 @@
 <?php
-
 function error_field($title, array $errors) {
     foreach ($errors as $error) {
         /* @var $error Error */
@@ -9,7 +8,7 @@ function error_field($title, array $errors) {
     }
     return '';
 }
-/* @var $user Booking */
+
 ?>
 <div class="card form"> 
 <h1><a href="index.php?module=auth&page=login">Log In</a> Sign Up </h1>
