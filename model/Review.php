@@ -2,7 +2,7 @@
 
 class Review {
 
-    const STATUS_PENDING = "PENDING";
+//    const STATUS_PENDING = "PENDING";
     
     private $id;
     private $date;
@@ -18,6 +18,7 @@ class Review {
     }
 
     function getDate() {
+       
         return $this->date;
     }
 

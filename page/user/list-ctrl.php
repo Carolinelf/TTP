@@ -11,5 +11,5 @@ $dao = new UserDao();
 
 // data for template
 //$title = Utils::capitalize($status) . ' TODOs';
-$sql = 'SELECT * FROM users WHERE privilege != "admin"';
+$sql = 'SELECT id, username, email, privilege FROM users';
 $users= $dao->find($sql);

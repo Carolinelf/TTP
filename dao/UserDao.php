@@ -27,7 +27,7 @@ class UserDao {
      * @return User User or <i>null</i> if not found
      */
     public function findById($id) {
-        $row = $this->query('SELECT * FROM users WHERE privilege = "user" AND id = ' . (int) $id)->fetch();
+        $row = $this->query('SELECT id, username, password, email, privilege FROM users WHERE privilege = "user" AND id = ' . (int) $id)->fetch();
         if (!$row) {
             return null;
         }
@@ -36,7 +36,7 @@ class UserDao {
         return $user;
     }
     public function findByCredentials($username, $password) {
-        $row = $this->query("SELECT * FROM users WHERE username = '$username' AND password = '$password'")->fetch();
+        $row = $this->query("SELECT id, username, password, email, privilege FROM users WHERE username = '$username' AND password = '$password'")->fetch();
         if (!$row) {
             return null;
         }
@@ -142,9 +142,7 @@ class UserDao {
             ':email' => $user->getEmail(),
             ':privilege' => $user->getPrivilege()
         );
-//        var_dump($user); echo'<br>';
-//        var_dump($params);
-//        die();
+
         return $params;
     }
     private function executeStatement(PDOStatement $statement, array $params) {

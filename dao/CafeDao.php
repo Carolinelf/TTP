@@ -1,14 +1,15 @@
 <?php
 
 class CafeDao {
-    
+
     /** @var PDO */
     private $db = null;
-    
+
     public function __destruct() {
         // close db connection
         $this->db = null;
     }
+
     /**
      * Find all {@link Cafe}s by search criteria.
      * @return array array of {@link Cafe}s
@@ -22,12 +23,13 @@ class CafeDao {
         }
         return $result;
     }
+
     /**
      * Find {@link Cafe} by identifier.
      * @return Cafe Cafe or <i>null</i> if not found
      */
     public function findById($id) {
-        $row = $this->query('SELECT * FROM cafe WHERE  id = ' . (int) $id)->fetch();
+        $row = $this->query('SELECT id, name, location, overview, average_rating FROM cafe WHERE  id = ' . (int) $id)->fetch();
         if (!$row) {
             return null;
         }
@@ -35,6 +37,7 @@ class CafeDao {
         CafeMapper::map($cafe, $row);
         return $cafe;
     }
+
     /**
      * Save {@link Cafe}.
      * @param Cafe $cafe {@link Cafe} to be saved
@@ -46,6 +49,7 @@ class CafeDao {
         }
         return $this->update($cafe);
     }
+
     /**
      * Delete {@link Cafe} by identifier.
      * @param int $id {@link Cafe} identifier
@@ -79,6 +83,7 @@ class CafeDao {
         }
         return $this->db;
     }
+
     /**
      * @return Cafe
      * @throws Exception
@@ -92,24 +97,26 @@ class CafeDao {
                 VALUES (:id, :name, :location, :overview, :average_rating)';
         return $this->execute($sql, $cafe);
     }
+
     /**
      * @return Cafe
      * @throws Exception
      */
     private function update(Cafe $cafe) {
-     //   $cafe->setLastModifiedOn(new DateTime());
+        //   $cafe->setLastModifiedOn(new DateTime());
         $sql = '
   
             UPDATE cafes SET
                 id = :id,
                 name = :name,
-                password = :password,
-                email = :email,
-                privilege = :privilege
+                location = :location,
+                overview = :overview,
+                average_rating = :average_rating
             WHERE
                 id = :id';
         return $this->execute($sql, $cafe);
     }
+
     /**
      * @return Cafe
      * @throws Exception
@@ -125,24 +132,25 @@ class CafeDao {
 //        }
         return $cafe;
     }
+
     private function getParams(Cafe $cafe) {
         $params = array(
             ':id' => $cafe->getId(),
             ':name' => $cafe->getName(),
             ':location' => $cafe->getLocation(),
             ':overview' => $cafe->getOverview(),
-            ':average_rating' => $cafe->getAverage_rating()
+            ':average_rating' => $cafe->getAverageRating()
         );
-//        var_dump($cafe); echo'<br>';
-//        var_dump($params);
-//        die();
+
         return $params;
     }
+
     private function executeStatement(PDOStatement $statement, array $params) {
         if (!$statement->execute($params)) {
             self::throwDbError($this->getDb()->errorInfo());
         }
     }
+
     /**
      * @return PDOStatement
      */
@@ -153,11 +161,14 @@ class CafeDao {
         }
         return $statement;
     }
+
     private static function throwDbError(array $errorInfo) {
         // TODO log error, send email, etc.
         throw new Exception('DB error [' . $errorInfo[0] . ', ' . $errorInfo[1] . ']: ' . $errorInfo[2]);
     }
+
     private static function formatDateTime(DateTime $date) {
         return $date->format(DateTime::ISO8601);
     }
+
 }

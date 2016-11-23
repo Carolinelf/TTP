@@ -12,15 +12,14 @@ if ($edit) {
 } else {
     // set defaults
     $review = new Review();
-    $date = new DateTime("now");
-    $date->setTime(0, 0, 0);
-    $review->setDate($date);
     $review->getComment();
     $userId = 1;
     $review->setUserId($userId);
     $cafeId = 1;
     $review->setCafeId($cafeId);
     $review->setStatus('pending');
+    $review->getCoffeeType('');
+    $review->getRating('');
 }
 
 if (array_key_exists('save', $_POST)) {
@@ -31,17 +30,17 @@ if (array_key_exists('save', $_POST)) {
         'rating' => $_POST['review']['rating'],
         'comment' => $_POST['review']['comment']
     );
-    
+      
     // map
-    ReviewMapper::map($review, $data);
+    ReviewMapper::map($review, $data); 
     // validate
-    $errors = ReviewValidator::validate($review);
-    
+    $errors = ReviewValidator::validate($review); 
+  
     // validate
     if (empty($errors)) {
         // save
-        $dao = new ReviewDao();
-        $review = $dao->save($review);
+        $dao = new ReviewDao(); 
+        $review = $dao->save($review); 
 
         Flash::addFlash('Review saved successfully.');
         // redirect
