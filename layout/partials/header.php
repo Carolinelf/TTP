@@ -49,19 +49,27 @@ $callToAct ='<a class="btn btn-primary btn-lg" href="index.php?module=auth&page=
 </head>
     <body>
         <header>   
-<nav class="navbar navbar-collapse collapse navbar-default navbar-fixed-top">
+<nav class="navbar navbar-collapse navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigationbar"> 
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span></button>   	
       <a class="navbar-brand" href="index.php?module=review&page=list">The Perfect Pour</a>
     </div>
+      <div class="navbar-collapse collapse" id="navigationbar">
     <ul class="nav navbar-nav navbar-right">
-        <li><a class="navbar-link"><?php echo "$greeting"?></a></li>  
+        <li><a class="active"><?php echo "$greeting"?></a></li>  
         <li><?php echo "$login"; ?></li>
-           <li><a href="#" class="navbar-link"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
-           <li><a href="#" class="navbar-link">Store</a></li>
+           <li><a href="#" class="active"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
+           <li><a href="#" class="active">Store</a></li>
        </ul>
+     </div>
   </div>
 </nav> 
+
 <div class="jumbotron hero-img">
       <div class="container">
         <h1>Need Coffee?</h1>
