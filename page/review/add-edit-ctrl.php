@@ -1,7 +1,7 @@
 <?php
 
 $headTemplate = new HeadTemplate('Add/Edit | The Perfect Pour', 'Edit or add a Review');
-$coffeeTypes = ['','Long Black', 'Flat White', 'Cappacino', 'Chemex'];
+$coffeeTypes = ['','Long Black', 'Flat White', 'Macchiato', 'Cappuccino', 'Chemex', 'Espresso', 'Latte', 'Pour Over', 'Cold Brew', 'Affogato', 'Mochaccino' ];
 $ratings = ['','1', '2', '3', '4', '5'];
 
 $errors = array();

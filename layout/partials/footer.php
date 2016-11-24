@@ -14,5 +14,6 @@
     
     <script type="text/javascript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/newjavascript.js"></script>
 </body>
 </html>

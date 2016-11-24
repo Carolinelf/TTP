@@ -1,8 +1,8 @@
 <?php
 
 final class Index {
-    const DEFAULT_PAGE = 'home';
-    const DEFAULT_MODULE = 'home';
+    const DEFAULT_PAGE = 'list';
+    const DEFAULT_MODULE = 'review';
     const PAGE_DIR = '../page/';
     const LAYOUT_DIR = '../layout/';
     private $module;

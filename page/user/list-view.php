@@ -24,8 +24,13 @@
                     <span class="label">Email Address:</span> 
                     <?php echo Utils::escape($user->getEmail());?>
                     <br><br>
-                    <p><a href="index.php?module=user&page=add-edit&id=<?php echo $user->getId()?>">Edit</a> 
-                        | <a href="index.php?module=user&page=delete&id=<?php echo $user->getId()?>">Delete</a></p>
+                    
+                    <?php 
+                       if(isset($_SESSION['username'])): ?>
+                         <a href="index.php?module=user&page=add-edit&id=<?php echo $user->getId()?>">Edit</a> 
+                        | <a href="index.php?module=user&page=delete&id=<?php echo $user->getId()?>">Delete</a>;
+                       
+                         <?php endif; ?>
                 </p>               
             </li>
         <?php endforeach; ?>

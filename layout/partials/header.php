@@ -1,37 +1,5 @@
 <?php 
-//if(!isset($_SESSION['username'])) {
-//$login = '<a href="index.php?module=auth&page=login" class="navbar-link">Login/Sign Up</a> ';
-//$callToAct ='<a class="btn btn-primary btn-lg" href="index.php?module=auth&page=register" role="button">Sign Up »</a>';
-//} else {
-//$username = $_SESSION['username'];
-//$addReview = '<li class="nav-item"> <a class="nav-link" href="index.php?module=review&page=add-edit">Add Review</a></li>';
-//$greeting = "Hello $username";   
-//$login = '<a href="index.php?module=auth&page=login&logout=true" class="navbar-link">Logout</a>';
-//    if ($_SESSION['privilege'] === 'admin') {
-//        $userList = '<li class="nav-item"> <a class="nav-link" href="index.php?module=user&page=list">User List</a></li>';
-//        $admin = 'Hello admin';
-//    }
-//}
-//$_SESSION['privilege'] = $privilege;
 
- if (isset($_SESSION['username'])) {
-$username = $_SESSION['username'];
-$greeting = "Hello $username";   
-$login = '<a href="index.php?module=auth&page=login&logout=true" class="navbar-link">Logout</a>';
-
-//        if ($privilege == 'admin') {
-//        $message = "hello user";
-//        $userList = '<li class="nav-item"> <a class="nav-link" href="index.php?module=user&page=list">User List</a></li>';
-//        } 
-//        else {
-//        $message = "hello admin";
-//        }
- } else if(!isset($_SESSION['username'])) {
-$login = '<a href="index.php?module=auth&page=login" class="navbar-link">Login/Sign Up</a> ';
-$callToAct ='<a class="btn btn-primary btn-lg" href="index.php?module=auth&page=register" role="button">Sign Up »</a>';
-}
- 
- 
         
 
 ?>
@@ -57,14 +25,23 @@ $callToAct ='<a class="btn btn-primary btn-lg" href="index.php?module=auth&page=
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span></button>   	
-      <a class="navbar-brand" href="index.php?module=review&page=list">The Perfect Pour</a>
+        <a class="navbar-brand" href="index.php?module=review&page=list">
+          <img class="logo" src="../web/img/TPP-logo.png" alt="The Perfect Pour Logo"></a>
     </div>
       <div class="navbar-collapse collapse" id="navigationbar">
     <ul class="nav navbar-nav navbar-right">
-        <li><a class="active"><?php echo "$greeting"?></a></li>  
-        <li><?php echo "$login"; ?></li>
-           <li><a href="#" class="active"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
-           <li><a href="#" class="active">Store</a></li>
+        <li><a class="active"><?php if (isset($_SESSION['username']))  {
+            $username = $_SESSION['username'];
+        } echo "Hello $username";
+?></a></li>  
+        <li><?php if (isset($_SESSION['username'])) {
+            echo '<a href="index.php?module=auth&page=login&logout=true" class="navbar-link">Logout</a>';
+        } else {
+            echo '<a href="index.php?module=auth&page=login" class="navbar-link">Login/Sign Up</a> ';
+        }
+        ?></li>
+           <li><a href="www.search.com" class="active"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
+           <li><a href="www.shop.com" class="active">Store</a></li>
        </ul>
      </div>
   </div>
@@ -74,7 +51,9 @@ $callToAct ='<a class="btn btn-primary btn-lg" href="index.php?module=auth&page=
       <div class="container">
         <h1>Need Coffee?</h1>
         <p class="tagline">We'll help you find the best!</p>
-        <p><?php echo "$callToAct"; ?><?php echo "$message"; ?></p>
+        <p><?php if(!isset($_SESSION['username'])) {
+echo '<a class="btn btn-primary btn-lg" href="index.php?module=auth&page=register" role="button">Sign Up »</a>';
+        }?></p>
       </div>
     </div>
    
