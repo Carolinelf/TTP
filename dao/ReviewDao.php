@@ -29,7 +29,7 @@ class ReviewDao {
      * @return Review Review or <i>null</i> if not found
      */
     public function findById($id) {
-        $row = $this->query('SELECT id, coffee_type, comment, user_id, cafe_id, status, rating FROM review WHERE status != "deleted" and id = ' . (int) $id)->fetch();
+        $row = $this->query('SELECT id, coffee_type, comment, user_id, cafe_id, status rating FROM review WHERE status != "deleted" and id = ' . (int) $id)->fetch();
         if (!$row) {
             return null;
         }
@@ -66,7 +66,7 @@ class ReviewDao {
         $statement = $this->getDb()->prepare($sql);
         $this->executeStatement($statement, array(
             ':status' => 'deleted',
-            ':id' => $id,
+            ':id' => $id
         ));
         return $statement->rowCount() == 1;
     }

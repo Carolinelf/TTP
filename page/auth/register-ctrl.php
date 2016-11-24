@@ -14,6 +14,7 @@ $edit = array_key_exists('id', $_GET);
     $user->getPassword();
     $user->getEmail();
     $user->setPrivilege('user');
+    $user->setStatus('pending');
 //}
     
 //if (array_key_exists('cancel', $_POST)) {

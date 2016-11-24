@@ -13,13 +13,10 @@ if ($edit) {
     $user->getUsername();
     $user->getPassword();
     $user->getEmail();
-}   $user->setPrivilege('user');
-
-//if (array_key_exists('cancel', $_POST)) {
-//    // redirect
-//    Utils::redirect('detail', array('id' => $b->getId()));
-//} else
-    
+    $user->setPrivilege('user');
+    $user->setStatus('pending');
+}
+ 
     if (array_key_exists('save', $_POST)) {
 
         

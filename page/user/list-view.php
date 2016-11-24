@@ -25,7 +25,7 @@
                     <?php echo Utils::escape($user->getEmail());?>
                     <br><br>
                     <p><a href="index.php?module=user&page=add-edit&id=<?php echo $user->getId()?>">Edit</a> 
-                        | <a href="index.php?module=user&page=delete&id=<//?php echo $user->getId()?>">Delete</a></p>
+                        | <a href="index.php?module=user&page=delete&id=<?php echo $user->getId()?>">Delete</a></p>
                 </p>               
             </li>
         <?php endforeach; ?>

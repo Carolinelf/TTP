@@ -56,6 +56,41 @@
     border-radius: 0px;
 }
 
+.btn-secondary:active,
+.btn-secondary:active:focus,
+.btn-secondary.active:focus,
+.btn-secondary:focus,
+.btn-secondary.focus,
+.open > .dropdown-toggle.btn-secondary:focus,
+.btn-secondary:active.focus,
+.btn-secondary.active.focus,
+.open > .dropdown-toggle.btn-secondary.focus
+.btn-secondary.active,
+.btn-secondary {
+    background-color: black;
+    color: white;
+    border-color: black;
+    border-radius: 0px;
+}
+
+.btn-secondary:hover,
+.open > .dropdown-toggle.btn-secondary, 
+.btn-secondary:active:hover,
+.btn-secondary.active:hover,
+.open > .dropdown-toggle.btn-secondary:hover
+ {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    box-shadow: none;
+    border-radius: 0px;
+}
+
+
+
+
+
+
 a.nav-link {
     color: black;
     font-size: 16px;

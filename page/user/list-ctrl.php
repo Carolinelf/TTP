@@ -11,5 +11,5 @@ $dao = new UserDao();
 
 // data for template
 //$title = Utils::capitalize($status) . ' TODOs';
-$sql = 'SELECT id, username, email, privilege FROM users';
+$sql = 'SELECT id, username, email, privilege FROM users WHERE status != "deleted"';
 $users= $dao->find($sql);
