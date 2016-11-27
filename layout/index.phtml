@@ -17,7 +17,7 @@ require 'partials/header.php'; ?>
                         <a class="nav-link" href="index.php?page=detail&module=user#">My Profile</a></li>  ';
                         }
                         if (array_key_exists('privilege', $_SESSION)){
-                        if ($_SESSION['privilege'] === 'admin') {
+                        if ($_SESSION['privilege'] === 'admin'){
                         echo '<li class="nav-item"> <a class="nav-link" href="index.php?module=user&page=list">User List</a></li>';
                         }} ?>
                 </ul>

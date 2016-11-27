@@ -1,12 +1,13 @@
 <?php
 $headTemplate = new HeadTemplate('Login | The Perfect Pour', 'Login to The Perfect Pour');
-$dao = new UserDao();
 
+$dao = new UserDao();
 if (isset($_POST['submit'])) {
+    
+    
     if (isset($_POST['username']) && isset($_POST['password'])) {
         $username = $_POST['username'];
         $password = $_POST['password'];
-        $privilege = $_POST['privilege'];
         $user = $dao->findByCredentials($username, $password);
 
         if ($user === null) {
@@ -17,10 +18,10 @@ if (isset($_POST['submit'])) {
             if (isset($_POST['remember-me'])) {
                 setcookie('remember-me', 'username', time() + 60, '/login.php');
             }
-            $_SESSION['privilege'] = $privilege;
             $_SESSION['username'] = $username;
-            $_SESSION['password'] = $password;
-            // redirect once logged in
+            $_SESSION['privilege'] = $user->getPrivilege();
+            
+//          redirect once logged in
             Utils::redirect('list', array('module' => 'review'));
         } else {
             $error = "Username and/or password is incorrect!";

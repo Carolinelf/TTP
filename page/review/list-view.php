@@ -29,11 +29,13 @@
                    <p><span class="label">Created By:</span><?php 
                    echo $user; 
                    ?></p>
-                   <?php if(isset($_SESSION['username'])): ?>
+                   <?php if (array_key_exists('privilege', $_SESSION)){
+                        if ($_SESSION['privilege'] === 'admin'){?>
                          <a href="index.php?module=review&page=add-edit&id=<?php echo $review->getId()?>">Edit</a>
                         | <a href="index.php?module=review&page=delete&id=<?php echo $review->getId()?>">Delete</a>
-                         <?php endif; ?>
+                   <?php }} ?>
                    </li>
            <?php endforeach; ?>
        </ul>
 <?php endif; ?>
+

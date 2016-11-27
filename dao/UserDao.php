@@ -96,6 +96,7 @@ class UserDao {
         //$now = new DateTime();
         $user->setId(null);
         $user->setStatus('pending');
+        $user->setPrivilege('user');
         $sql = '
             INSERT INTO users (id, username, password, email, privilege, status)
                 VALUES (:id, :username, :password, :email, :privilege, :status)';
@@ -106,9 +107,7 @@ class UserDao {
      * @throws Exception
      */
     private function update(User $user) {
-     //   $user->setLastModifiedOn(new DateTime());
         $sql = '
-  
             UPDATE users SET
                 id = :id,
                 username = :username,
@@ -130,9 +129,7 @@ class UserDao {
         if (!$user->getId()) {
             return $this->findById($this->getDb()->lastInsertId());
         }
-//        if (!$statement->rowCount()) {
-//            throw new NotFoundException('User with ID "' . $user->getId() . '" does not exist.');
-//        }
+
         return $user;
     }
     private function getParams(User $user) { 

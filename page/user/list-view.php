@@ -14,7 +14,7 @@
 <?php else: ?>
     <ul class="list">
         <?php foreach ($users as $user): ?>
-            <li>                
+            <li class="card">                
                 <h3><a href="<?php echo Utils::createLink('detail', 
                         array('id' => $user->getId())) ?>"><?php 
                         echo Utils::escape($user->getUsername()); ?></a></h3>                
@@ -26,11 +26,13 @@
                     <br><br>
                     
                     <?php 
-                       if(isset($_SESSION['username'])): ?>
+                       if (array_key_exists('privilege', $_SESSION)){
+                        if ($_SESSION['privilege'] === 'admin'){
+                         ?>
                          <a href="index.php?module=user&page=add-edit&id=<?php echo $user->getId()?>">Edit</a> 
-                        | <a href="index.php?module=user&page=delete&id=<?php echo $user->getId()?>">Delete</a>;
+                        | <a href="index.php?module=user&page=delete&id=<?php echo $user->getId()?>">Delete</a>
                        
-                         <?php endif; ?>
+                       <?php }} ?>
                 </p>               
             </li>
         <?php endforeach; ?>
