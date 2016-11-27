@@ -7,7 +7,12 @@ class User {
     private $password;
     private $email;
     private $privilege;
+    private $status;
     
+    function getStatus() {
+        return $this->status;
+    }
+
     function getId() {
         return $this->id;
     }
@@ -27,7 +32,9 @@ class User {
     function getPrivilege() {
         return $this->privilege;
     }
-
+    function setStatus($status) {
+        $this->status = $status;
+    }
     function setId($id) {
         $this->id = $id;
     }

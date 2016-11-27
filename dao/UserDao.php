@@ -27,7 +27,7 @@ class UserDao {
      * @return User User or <i>null</i> if not found
      */
     public function findById($id) {
-        $row = $this->query('SELECT * FROM users WHERE privilege = "user" AND id = ' . (int) $id)->fetch();
+        $row = $this->query('SELECT id, username, password, email, privilege, status FROM users WHERE status != "deleted" AND id = ' . (int) $id)->fetch();
         if (!$row) {
             return null;
         }
@@ -36,7 +36,7 @@ class UserDao {
         return $user;
     }
     public function findByCredentials($username, $password) {
-        $row = $this->query("SELECT * FROM users WHERE username = '$username' AND password = '$password'")->fetch();
+        $row = $this->query("SELECT id, username, password, email, privilege, status FROM users WHERE username = '$username' AND password = '$password'")->fetch();
         if (!$row) {
             return null;
         }
@@ -60,19 +60,19 @@ class UserDao {
      * @param int $id {@link User} identifier
      * @return bool <i>true</i> on success, <i>false</i> otherwise
      */
-//    public function delete($id) {
-//        $sql = '
-//            UPDATE users SET
-//                status = :status
-//            WHERE
-//                id = :id';
-//        $statement = $this->getDb()->prepare($sql);
-//        $this->executeStatement($statement, array(
-//            ':status' => 'deleted',
-//            ':id' => $id,
-//        ));
-//        return $statement->rowCount() == 1;
-//    }
+    public function delete($id) {  
+        $sql = '
+            UPDATE users SET
+                status = :status
+            WHERE
+                id = :id'; 
+        $statement = $this->getDb()->prepare($sql);
+        $this->executeStatement($statement, array(
+            ':status' => 'deleted',
+            ':id' => $id
+        ));
+        return $statement->rowCount() == 1;
+    }
     /**
      * @return PDO
      */
@@ -95,10 +95,11 @@ class UserDao {
     private function insert(User $user) {
         //$now = new DateTime();
         $user->setId(null);
-        //$user->setStatus('pending');
+        $user->setStatus('pending');
+        $user->setPrivilege('user');
         $sql = '
-            INSERT INTO users (id, username, password, email, privilege)
-                VALUES (:id, :username, :password, :email, :privilege)';
+            INSERT INTO users (id, username, password, email, privilege, status)
+                VALUES (:id, :username, :password, :email, :privilege, :status)';
         return $this->execute($sql, $user);
     }
     /**
@@ -106,15 +107,14 @@ class UserDao {
      * @throws Exception
      */
     private function update(User $user) {
-     //   $user->setLastModifiedOn(new DateTime());
         $sql = '
-  
             UPDATE users SET
                 id = :id,
                 username = :username,
                 password = :password,
                 email = :email,
-                privilege = :privilege
+                privilege = :privilege,
+                status = :status
             WHERE
                 id = :id';
         return $this->execute($sql, $user);
@@ -129,22 +129,19 @@ class UserDao {
         if (!$user->getId()) {
             return $this->findById($this->getDb()->lastInsertId());
         }
-//        if (!$statement->rowCount()) {
-//            throw new NotFoundException('User with ID "' . $user->getId() . '" does not exist.');
-//        }
+
         return $user;
     }
-    private function getParams(User $user) {
+    private function getParams(User $user) { 
         $params = array(
             ':id' => $user->getId(),
             ':username' => $user->getUsername(),
             ':password' => $user->getPassword(),
             ':email' => $user->getEmail(),
-            ':privilege' => $user->getPrivilege()
+            ':privilege' => $user->getPrivilege(),
+            ':status' => $user->getStatus()
         );
-//        var_dump($user); echo'<br>';
-//        var_dump($params);
-//        die();
+
         return $params;
     }
     private function executeStatement(PDOStatement $statement, array $params) {

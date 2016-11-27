@@ -1,24 +1,25 @@
-<?php require 'partials/header.php'; ?>
+<?php 
+require 'partials/header.php'; ?>
 <main>
     <div class='container'>
         <div class='row'>
             <div class='col-sm-3'>
                 <ul class="nav nav-pills nav-stacked">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.php?module=home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php?module=review&page=add-edit">Review</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">My Profile</a>
-                    </li>            
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Suburbs</a>
+                        <a class="nav-link" href="index.php?module=review&page=list">Reviews</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?module=cafe&page=list">Cafes</a>
                     </li>
+                    <?php if (isset($_SESSION['username'])){
+                        echo '<li class="nav-item"> <a class="nav-link" href="index.php?module=review&page=add-edit">Add Review</a></li>'
+                        . '<li class="nav-item">
+                        <a class="nav-link" href="index.php?page=detail&module=user#">My Profile</a></li>  ';
+                        }
+                        if (array_key_exists('privilege', $_SESSION)){
+                        if ($_SESSION['privilege'] === 'admin'){
+                        echo '<li class="nav-item"> <a class="nav-link" href="index.php?module=user&page=list">User List</a></li>';
+                        }} ?>
                 </ul>
             </div>
             <div class='col-sm-9'>

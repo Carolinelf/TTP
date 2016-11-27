@@ -4,33 +4,33 @@ $headTemplate = new HeadTemplate('Sign up | The Perfect Pour', 'Register as a Us
 
 $errors = array();
 $edit = array_key_exists('id', $_GET);
-//if ($edit) {
-//    $dao = new UserDao();
-//    $user = Utils::getObjByGetId($dao);
-//} else {
+
     // set defaults
     $user = new User();
     $user->getUsername();
     $user->getPassword();
     $user->getEmail();
     $user->setPrivilege('user');
-//}
-    
-//if (array_key_exists('cancel', $_POST)) {
-//    // redirect
-//    Utils::redirect('detail', array('id' => $b->getId()));
-//} else
+    $user->setStatus('pending');
+
     
     if (array_key_exists('save', $_POST)) {
-
-        
+//        $username = $_POST['username'];
+//        $password = $_POST['password'];
+//        $privilege = $_POST['privilege'];
+//        
+//        $_SESSION['privilege'] = $privilege;
+//        $_SESSION['username'] = $username;
+//        $_SESSION['password'] = $password;
+// 
     // for security reasons, do not map the whole $_POST['todo']
     $data = array(
         'username' => $_POST['user']['username'],
         'password' => $_POST['user']['password'],
         'email' => $_POST['user']['email']
     );
- 
+    
+
     // map
     UserMapper::map($user, $data);
 
@@ -44,5 +44,6 @@ $edit = array_key_exists('id', $_GET);
         Flash::addFlash('User saved successfully.');
         // redirect
         Utils::redirect('list', array('module'=>'user'));
-     }
-}
+     
+    }
+    }

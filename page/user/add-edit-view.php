@@ -12,6 +12,7 @@ function error_field($title, array $errors) {
 /* @var $user Booking */
 ?>
 
+<div class="card form">
 <h1>
     <?php if ($edit): ?>
         Edit User
@@ -32,27 +33,28 @@ function error_field($title, array $errors) {
 
 <form action="#" method="post">
     <fieldset>
-        <div class="field">
-            <label>Username:</label>
-            
-            <input type="text" name="user[username]" value="<?php echo Utils::escape($user->getUsername()); ?>"
-                   class="text<?php echo error_field('username', $errors); ?>"/>
-        </div>
-        <div class="field">
-            <label>Password:</label>
-            
-            <input type="password" name="user[password]" value="<?php echo Utils::escape($user->getPassword()); ?>"
-                   class="text<?php echo error_field('password', $errors); ?>"/>
-        </div>
-        <div class="field">
-            <label>Email:</label>
-            
-            <input type="text" name="user[email]" value="<?php echo Utils::escape($user->getEmail()); ?>"
-                   class="text<?php echo error_field('email', $errors); ?>"/>
-        </div>
- 
-        <div class="wrapper">
-            <input type="submit" name="save" value="<?php echo $edit ? 'EDIT' : 'ADD'; ?>" class="submit" />
-        </div>
+            <div class="form-group row">
+                <div class=" col-xs-6"> 
+                    <label for="username">Username:</label>
+                    <input type="text" name="user[username]" id="username" value="<?php echo Utils::escape($user->getUsername()); ?>"
+                   class="form-control text<?php echo error_field('username', $errors); ?>"/>
+                </div></div>
+            <div class="form-group row">
+                <div class=" col-xs-6"> 
+                    <label for="password">Password:</label>
+                    <input type="password" name="user[password]" id="password" value="<?php echo Utils::escape($user->getPassword()); ?>"
+                   class="form-control text<?php echo error_field('password', $errors); ?>"/>
+                </div></div>
+                        <div class="form-group row">
+                <div class=" col-xs-6"> 
+                    <label for="email">Email:</label>
+                    <input type="text"  name="user[email]" id="email" value="<?php echo Utils::escape($user->getEmail()); ?>"
+                   class="form-control text<?php echo error_field('email', $errors); ?>"/>
+                </div></div>
+                <div class="form-group row">
+                            <div class="offset-sm-6 col-sm-6">
+                                <button type="submit" class="btn btn-secondary"  name="save" value="<?php echo $edit ? 'EDIT' : 'ADD'; ?>" class="submit">Submit</button>
+                            </div>
+                        </div>
     </fieldset>
 </form>

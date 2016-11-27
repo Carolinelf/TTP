@@ -6,7 +6,7 @@ class Cafe {
     private $name;
     private $location;
     private $overview;
-    private $average_rating;
+    private $averageRating;
 
     function getId() {
         return $this->id;
@@ -24,8 +24,8 @@ class Cafe {
         return $this->overview;
     }
 
-    function getAverage_rating() {
-        return $this->average_rating;
+    function getAverageRating() {
+        return $this->averageRating;
     }
 
     function setId($id) {
@@ -44,7 +44,7 @@ class Cafe {
         $this->overview = $overview;
     }
 
-    function setAverage_rating($average_rating) {
-        $this->average_rating = $average_rating;
+    function setAverageRating($averageRating) {
+        $this->averageRating = $averageRating;
     }
-}
+} 

@@ -1,47 +1,37 @@
-<?php
-
-function error_field($title, array $errors) {
-    foreach ($errors as $error) {
-        /* @var $error Error */
-        if ($error->getSource() == $title) {
-            return ' error-field';
-        }
-    }
-    return '';
-}
+<?php //
 /* @var $user Booking */
 ?>
+
 <div class="card form">
-<h1> Log In <a href="index.php?module=auth&page=register">Sign Up</a></h1>
-
-<?php if (!empty($errors)): ?>
-<ul class="errors">
-    <?php foreach ($errors as $error): ?>
-        <?php /* @var $error Error */ ?>
-        <li><?php echo $error->getMessage(); ?></li>
-    <?php endforeach; ?>
-</ul>
-<?php endif; ?>
- 
-
-<form  action="#" method="post">
-    <fieldset>
-        <div class="field">
-            <label>Username:</label>
-            
-            <input type="text" name="user[username]" value="<?php echo Utils::escape($user->getUsername()); ?>"
-                   class="text<?php echo error_field('username', $errors); ?>"/>
+    <h1> Log In <a href="index.php?module=auth&page=register">Sign Up</a></h1>
+    <?php if ($errors) { ?>
+        <div class="errors">
+            <p><?php echo $errors; ?></p>
         </div>
-        <div class="field">
-            <label>Password:</label>
-            
-            <input type="password" name="user[password]" value="<?php echo Utils::escape($user->getPassword()); ?>"
-                   class="text<?php echo error_field('password', $errors); ?>"/>
-        </div>
- 
-        <div class="wrapper">
-            <input type="submit" name="save" value="<?php echo $edit ? 'EDIT' : 'ADD'; ?>" class="submit" />
-        </div>
-    </fieldset>
-</form>
-</div>
+    <?php } ?> 
+    <form  action="#" method="post">
+        <fieldset>
+            <div class="form-group row">
+                <div class=" col-xs-10"> 
+                    <label for="username">Username:</label>
+                    <input type="text" class="form-control" name="username" id="username"/>
+                </div></div>
+            <div class="form-group row">
+                <div class=" col-xs-10"> 
+                    <label for="password">Password:</label>
+                    <input type="password"  class="form-control" name="password" id="password"/>
+                </div></div>
+            <div class="form-group row">
+                <div class="offset-sm-2 col-sm-10">
+                    <label class="checkbox-label" for="remember-me-label">
+                        <input type="checkbox" value="remember-me" id="remember-me-label"> Remember me
+                        </div>
+                        </div>
+                    <div class="form-group row wrapper">
+                            <div class="offset-sm-2 col-sm-10">
+                                <button type="submit" type="submit" name="submit" value="submit" class="btn btn-secondary">Submit</button>
+                            </div>
+                        </div>
+                        </fieldset>
+                        </form>
+                </div>

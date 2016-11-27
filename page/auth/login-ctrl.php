@@ -1,49 +1,40 @@
 <?php
-session_start(); 
 $headTemplate = new HeadTemplate('Login | The Perfect Pour', 'Login to The Perfect Pour');
 
-$errors = array();
-$user = null;
-//$edit = array_key_exists('id', $_GET);
-//if ($edit) {
-//    $dao = new UserDao();
-//    $user = Utils::getObjByGetId($dao);
-//} else {
-    // set defaults
-    $user = new User();
-    $user->getUsername();
-    $user->getPassword();
-//    $user->getEmail();
-//    $user->setPrivilege('user');
-//}
-
-//if (array_key_exists('cancel', $_POST)) {
-//    // redirect
-//    Utils::redirect('detail', array('id' => $b->getId()));
-//} else
+$dao = new UserDao();
+if (isset($_POST['submit'])) {
     
-//    if (array_key_exists('save', $_POST)) {
-    // for security reasons, do not map the whole $_POST['todo']
-    $data = array(
-        $username => $_POST['user']['username'],
-        $password => $_POST['user']['password']
-
-//        'username' => $_POST['user']['username'],
-//        'password' => $_POST['user']['password']
-//        'email' => $_POST['user']['email']
-    );
     
-    // map
-    UserMapper::map($user, $data);
-    // validate
-    $errors = LoginValidator::validate($user);
-    // validate
-    if (empty($errors)) {
-        // save
-        $dao = new UserDao();
-        $user = $dao->save($user);
-        Flash::addFlash('User saved successfully.');
-        // redirect once logged in
-        Utils::redirect('list', array('module'=>'user'));
-     }
-//}
+    if (isset($_POST['username']) && isset($_POST['password'])) {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $user = $dao->findByCredentials($username, $password);
+
+        if ($user === null) {
+            Utils::redirect('login', array('module' => 'auth'));
+        }
+
+        if ($username === $user->getUsername() && $password === $user->getPassword()) {
+            if (isset($_POST['remember-me'])) {
+                setcookie('remember-me', 'username', time() + 60, '/login.php');
+            }
+            $_SESSION['username'] = $username;
+            $_SESSION['privilege'] = $user->getPrivilege();
+            
+//          redirect once logged in
+            Utils::redirect('list', array('module' => 'review'));
+        } else {
+            $error = "Username and/or password is incorrect!";
+        }
+    }
+    if (isset($_COOKIE['remember-me'])) {
+        $_SESSION['username'] = $_COOKIE['remember-me'];
+        header('Location: index.php');
+    }
+}
+
+if (isset($_GET['logout'])) {
+    session_destroy();
+    header('Location: index.php?module=review&page=list');
+}
+

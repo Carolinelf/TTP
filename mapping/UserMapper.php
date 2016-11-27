@@ -27,5 +27,8 @@ class UserMapper {
         if (array_key_exists('privilege', $properties)) {
             $user->setPrivilege($properties['privilege']);
         }
+        if (array_key_exists('status', $properties)) {
+            $user->setStatus($properties['status']);
+        }
     }
 }

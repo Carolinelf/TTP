@@ -7,7 +7,7 @@
 //  $todos - TODOs to be displayed
 ?>
 
-<h1>Cafes</h1>
+<h1 class="underline">Cafes</h1>
 
 <?php if (empty($cafes)): ?>
     <p>No cafes found.</p>
@@ -16,17 +16,22 @@
     <ul class="list">
         <?php foreach ($cafes as $cafe): ?>
             
-        <li class="card">                
+        <li class="card">   
+            <div class="numberCircle"><?php 
+                echo Utils::escape($cafe->getAverageRating()); 
+                ?></div>
                 <h3><a href="<?php echo Utils::createLink('detail', 
-                        array('id' => $cafe->getId())) ?>"><?php 
+                        array('module' => 'cafe', 'id' => $cafe->getId())) ?>"><?php 
                         echo Utils::escape($cafe->getName()); ?></a></h3>  
+               
                 <p><span class="label">Location:</span> <?php 
                 echo Utils::escape($cafe->getLocation()); 
                 ?></p>     
                 <p><span class="label">Overview:</span> <?php 
                 echo Utils::escape($cafe->getOverview()); 
-                ?></p>
-            </li>
+                ?>
+                </p>
+                 </li>
         <?php endforeach; ?>
     </ul>
         

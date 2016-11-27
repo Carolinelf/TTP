@@ -2,6 +2,8 @@
 
 class Review {
 
+//    const STATUS_PENDING = "PENDING";
+    
     private $id;
     private $date;
     private $coffeeType;
@@ -16,6 +18,7 @@ class Review {
     }
 
     function getDate() {
+       
         return $this->date;
     }
 
