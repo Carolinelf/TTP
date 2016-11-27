@@ -7,7 +7,7 @@
 //  $todos - TODOs to be displayed
 ?>
 
-<h1>Users</h1>
+<h1 class="underline">Users</h1>
 
 <?php if (empty($users)): ?>
     <p>No users found.</p>

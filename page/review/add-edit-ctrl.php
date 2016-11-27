@@ -1,5 +1,14 @@
 <?php
 
+//$smt = $db->prepare('SELECT name FROM cafe');
+//$smt->execute();
+//$data = $smt->fetchAll();
+
+
+$mysqli = new mysqli("localhost","root","root","the_perfect_pour");
+$sqlSelect="SELECT name FROM cafe";
+$result = $mysqli -> query ($sqlSelect);
+
 $headTemplate = new HeadTemplate('Add/Edit | The Perfect Pour', 'Edit or add a Review');
 $coffeeTypes = ['','Long Black', 'Flat White', 'Macchiato', 'Cappuccino', 'Chemex', 'Espresso', 'Latte', 'Pour Over', 'Cold Brew', 'Affogato', 'Mochaccino' ];
 $ratings = ['','1', '2', '3', '4', '5'];
@@ -15,7 +24,7 @@ if ($edit) {
     $review->getComment();
     $userId = 1;
     $review->setUserId($userId);
-    $cafeId = 1;
+    $cafeId;
     $review->setCafeId($cafeId);
     $review->setStatus('pending');
     $review->getCoffeeType('');
@@ -47,3 +56,8 @@ if (array_key_exists('save', $_POST)) {
         Utils::redirect('list', array('module'=>'review'));
     }
 }
+
+
+
+
+

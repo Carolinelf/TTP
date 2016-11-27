@@ -31,8 +31,9 @@
       <div class="navbar-collapse collapse" id="navigationbar">
     <ul class="nav navbar-nav navbar-right">
         <li><a class="active"><?php if (isset($_SESSION['username']))  {
-            $username = $_SESSION['username'];
-        } echo "Hello $username";
+            $username = $_SESSION['username']; 
+            $greeting = "Hello $username";
+        } echo $greeting;
 ?></a></li>  
         <li><?php if (isset($_SESSION['username'])) {
             echo '<a href="index.php?module=auth&page=login&logout=true" class="navbar-link">Logout</a>';

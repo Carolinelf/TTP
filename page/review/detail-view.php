@@ -3,12 +3,13 @@
 <?php else: ?>
         <ul class="list">
            <?php foreach ($reviews as $review): ?>
-               <li class="card"><p><span class="label">Coffee Type:</span> <?php 
+               <li class="card">
+                   <div class="numberCircle"><?php 
+                echo Utils::escape($review->getRating()); 
+                ?></div>
+                   <p><span class="label">Coffee Type:</span> <?php 
                    echo Utils::escape($review->getCoffeeType()); 
                    ?></p>  
-                   <p><span class="label">Rating:</span> <?php 
-                   echo Utils::escape($review->getRating()); 
-                   ?></p> 
                    <p><span class="label">Date Created:</span> <?php 
                    echo Utils::escape($review->getDate()); 
                    ?></p>  

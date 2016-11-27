@@ -45,12 +45,26 @@ function error_field($title, array $errors) {
 <?php endforeach; ?>
                     </select>
                 </div></div>
+            
             <div class="form-group row">
                 <div class=" col-xs-10"> 
                     <label for="cafe">Cafe:</label>
-                    <input class="form-control" type="text" name="review[cafe_id]" value="<?php echo Utils::escape($review->getCafeId()); ?>"
-                           class="text<?php echo error_field('cafe_id', $errors); ?>"/>
+                            <select class="form-control" name="name" id="name" >
+                                
+                              <?php 
+                              while ($row = mysqli_fetch_array($result)) {
+                                    $rows[] = $row;
+                                }
+                              foreach ($rows as $row): ?>
+                                  <option><?= $row["name"] ?></option>
+                              <?php endforeach ?>
+                          </select>
+<!--                    <input class="form-control" type="text" name="review[cafe_id]" value="<?php // echo Utils::escape($review->getCafeId()); ?>"
+                           class="text<?php // echo error_field('cafe_id', $errors); ?>"/>-->
                 </div>  </div>
+          
+            
+            
             <div class="form-group row">
                 <div class=" col-xs-10">       
                     <label for="rating">Rating:</label>

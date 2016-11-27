@@ -13,6 +13,11 @@
     text-shadow: 1px 1px 3px black;
 }
 
+h1.underline  {
+    display: inline;
+    border-bottom: 6px solid rgba(255, 182, 193, 0.5);
+    
+}
 .jumbotron .tagline {
     color: white;
     text-shadow: 1px 1px 3px black;
@@ -86,11 +91,6 @@
     border-radius: 0px;
 }
 
-
-
-
-
-
 a.nav-link {
     color: black;
     font-size: 16px;
@@ -98,24 +98,24 @@ a.nav-link {
     border-radius: 0px;
 }
 
-
-
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:focus {
-     color: white;
+    color: black;
     font-size: 16px;
-    background-color: black;
+    background-color: white;
     border: 3px solid black;
     border-radius: 0px;
+    box-shadow: 6px 6px 0 rgba(255, 182, 193, .5);
 }
 .nav-pills > li > a:focus,
 .nav-pills > li > a:hover,
 .nav-pills > li.active > a:hover {
-    color: white;
+    color: black;
     font-size: 16px;
-    background-color: pink;
+    background-color: white;
     border: 3px solid black;
     border-radius: 0px;
+    box-shadow: 6px 6px 0 rgba(255, 182, 193, .5a);
 }
 
 .nav-stacked>li {
@@ -151,7 +151,6 @@ ul.list {
   padding:  20px;
   border: 2px solid white;
   box-shadow: 0px 0px 5px #A9A9A9;
- 
 }
 
 .form {
@@ -168,5 +167,19 @@ h1, h2, h3 {
 }
 
 img.logo {
-    width: 70px;
+    width: 75px;
+}
+
+.numberCircle {
+    margin: 10px;
+    float: right;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+    border: 3px solid black;
+    color: black;
+    text-align: center;
+    font-weight: 500;
+    font-size: 25px;
 }

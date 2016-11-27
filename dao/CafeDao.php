@@ -37,7 +37,7 @@ class CafeDao {
         CafeMapper::map($cafe, $row);
         return $cafe;
     }
-
+    
     /**
      * Save {@link Cafe}.
      * @param Cafe $cafe {@link Cafe} to be saved
