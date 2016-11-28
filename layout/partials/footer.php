@@ -14,6 +14,12 @@
     
     <script type="text/javascript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
-    <script type="text/javascript" src="js/newjavascript.js"></script>
+    <script type="text/javascript" src="js/nav-pills.js"></script>
+    <script type="text/javascript" src="js/validator.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        addFormValidation(document.querySelector('.validator'))
+    });
+</script>
 </body>
 </html>

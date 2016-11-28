@@ -27,7 +27,7 @@
                    echo Utils::escape($review->getComment()); 
                    ?></p> 
                    <p><span class="label">Created By:</span><?php 
-                   echo $user; 
+                   echo  Utils::escape($review->getUsername());
                    ?></p>
                    <?php if (array_key_exists('privilege', $_SESSION)){
                         if ($_SESSION['privilege'] === 'admin'){?>

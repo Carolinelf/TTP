@@ -9,17 +9,19 @@
             <p><?php echo $errors; ?></p>
         </div>
     <?php } ?> 
-    <form  action="#" method="post">
+    <form class="validator" action="#" method="post">
         <fieldset>
             <div class="form-group row">
                 <div class=" col-xs-10"> 
                     <label for="username">Username:</label>
-                    <input type="text" class="form-control" name="username" id="username"/>
+                    <input type="text" class="form-control" name="username" id="username" required/>
+                    <span class="correct" id="username-error"></span>
                 </div></div>
             <div class="form-group row">
                 <div class=" col-xs-10"> 
                     <label for="password">Password:</label>
-                    <input type="password"  class="form-control" name="password" id="password"/>
+                    <input type="password"  class="form-control" name="password" id="password" required/>
+                    <span class="correct" id="password-error"></span>
                 </div></div>
             <div class="form-group row">
                 <div class="offset-sm-2 col-sm-10">

@@ -16,6 +16,9 @@
                    <p><span class="label">Review:</span> <?php 
                    echo Utils::escape($review->getComment()); 
                    ?></p> 
+                   <p><span class="label">Created By:</span><?php 
+                   echo  Utils::escape($review->getUsername());
+                   ?></p>
                    </li>
            <?php endforeach; ?>
        </ul>

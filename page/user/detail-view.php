@@ -1,8 +1,6 @@
-<?php
+<h1 class="underline"> User Profile</h1>
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+    <p><span class="label">Username:</span> <?php echo $user->getUsername() ?> </p>
+    <p><span class="label">Email:</span> <?php echo $user->getEmail() ?></p>
+     
+<?php require '../page/review/detail-view.php'; ?>

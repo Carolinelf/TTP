@@ -5,9 +5,9 @@
 //$data = $smt->fetchAll();
 
 
-$mysqli = new mysqli("localhost","root","root","the_perfect_pour");
+$sql = new mysqli("localhost","root","root","the_perfect_pour");
 $sqlSelect="SELECT name FROM cafe";
-$result = $mysqli -> query ($sqlSelect);
+$result = $sql -> query ($sqlSelect);
 
 $headTemplate = new HeadTemplate('Add/Edit | The Perfect Pour', 'Edit or add a Review');
 $coffeeTypes = ['','Long Black', 'Flat White', 'Macchiato', 'Cappuccino', 'Chemex', 'Espresso', 'Latte', 'Pour Over', 'Cold Brew', 'Affogato', 'Mochaccino' ];
@@ -22,7 +22,8 @@ if ($edit) {
     // set defaults
     $review = new Review();
     $review->getComment();
-    $userId = 1;
+    
+    $userId = $_GET['user_id'];
     $review->setUserId($userId);
     $cafeId;
     $review->setCafeId($cafeId);
@@ -43,7 +44,7 @@ if (array_key_exists('save', $_POST)) {
     // map
     ReviewMapper::map($review, $data); 
     // validate
-    $errors = ReviewValidator::validate($review); 
+   // $errors = ReviewValidator::validate($review); 
   
     // validate
     if (empty($errors)) {

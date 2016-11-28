@@ -36,6 +36,8 @@ class ReviewMapper {
         if (array_key_exists('rating', $properties)) {
             $review->setRating($properties['rating']);
         }
- 
+        if (array_key_exists('username', $properties)) {
+            $review->setUsername($properties['username']);
+        }
     }
 }

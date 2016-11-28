@@ -2,5 +2,6 @@
 
 $id = $_GET['id'];
 $dao = new ReviewDao();
-$sql = 'SELECT id, date, coffee_type, comment, user_id, cafe_id,rating FROM review WHERE  status != "deleted" AND cafe_id = ' . $id;
+
+$sql = 'SELECT review.id, review.date, review.coffee_type, review.comment, review.rating, review.user_id, review.cafe_id, users.username AS username FROM review JOIN users ON review.user_id = users.id AND review.status = "pending"';
 $reviews = $dao->find($sql);

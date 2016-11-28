@@ -12,13 +12,13 @@ class Review {
     private $cafeId;
     private $status;
     private $rating;
+    private $username;
     
     function getId() {
         return $this->id;
     }
 
     function getDate() {
-       
         return $this->date;
     }
 
@@ -44,6 +44,10 @@ class Review {
 
     function getRating() {
         return $this->rating;
+    }
+
+    function getUsername() {
+        return $this->username;
     }
 
     function setId($id) {
@@ -76,6 +80,10 @@ class Review {
 
     function setRating($rating) {
         $this->rating = $rating;
+    }
+
+    function setUsername($username) {
+        $this->username = $username;
     }
 
 

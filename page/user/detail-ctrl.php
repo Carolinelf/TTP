@@ -1,6 +1,11 @@
 <?php
+$headTemplate = new HeadTemplate('User Profile | The Perfect Pour', 'User Details');
 
-$id = $_SESSION['id'];
 $dao = new UserDao();
-$sql = 'SELECT username, email, password FROM user WHERE  status != "deleted" AND id = ' . $id;
-$reviews = $dao->find($sql);
+$user = Utils::getObjByGetId($dao);
+
+//$_SESSION['id'] = $user->getId();
+//$userId = $_SESSION['id'];
+//
+//$sql = 'SELECT username, email, password FROM user WHERE  status != "deleted" AND id = ' . $userId;
+//$user = $dao->find($sql);
