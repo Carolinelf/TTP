@@ -23,12 +23,7 @@
                     <input type="password"  class="form-control" name="password" id="password" required/>
                     <span class="correct" id="password-error"></span>
                 </div></div>
-            <div class="form-group row">
-                <div class="offset-sm-2 col-sm-10">
-                    <label class="checkbox-label" for="remember-me-label">
-                        <input type="checkbox" value="remember-me" id="remember-me-label"> Remember me
-                        </div>
-                        </div>
+            
                     <div class="form-group row wrapper">
                             <div class="offset-sm-2 col-sm-10">
                                 <button type="submit" type="submit" name="submit" value="submit" class="btn btn-secondary">Submit</button>

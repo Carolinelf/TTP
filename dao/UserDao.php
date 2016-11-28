@@ -20,6 +20,7 @@ class UserDao {
             UserMapper::map($user, $row);
             $result[$user->getId()] = $user;
         }
+
         return $result;
     }
     /**

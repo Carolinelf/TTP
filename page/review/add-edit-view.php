@@ -30,7 +30,7 @@ function error_field($title, array $errors) {
         </ul>
 <?php endif; ?>
 
-    <form action="#" method="post">
+    <form class="validator" action="#" method="post">
         <fieldset>
             <div class="form-group row">
                 <div class=" col-xs-10"> 

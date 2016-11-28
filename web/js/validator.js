@@ -8,10 +8,8 @@ var correctMessage = "✓";
 var errorSpan;
 var username = document.querySelector('#username');
 var password = document.querySelector('#password');
-//var mountainOption = document.querySelector('.mountain-lake-options');
-//var trampOption = document.querySelector('.tramp-options');
-//var photoOption = document.querySelector('.photo-options');
-//var dropDowns = document.querySelector('#dropdowns');
+var username = document.querySelector('#email');
+
 
 
 //when the page loads
@@ -95,10 +93,10 @@ function addFormValidation(theForm) {
 //            errorMessage = "Must be 2 or more characters long.";
 //        }
 //
-//        //checks if input is a valid email address
-//        if (field.type === "email" && !isEmail(field.value)) {
-//            errorMessage = "This should be a valid email address.";
-//        }
+        //checks if input is a valid email address
+        if (field.type === "email" && !isEmail(field.value)) {
+            errorMessage = "This should be a valid email address.";
+        }
 //
 //        //checks if valid phone number
 //        if (field.id === "phone" && !isPhone(field.value)) {
@@ -142,10 +140,10 @@ function addFormValidation(theForm) {
         return ['submit', 'reset', 'button', 'hidden', 'fieldset'].indexOf(field.type) === -1;
     }
 
-//    //checks to see if email input is valid email address format
-//    function isEmail(input) {
-//        return input.match(/^([a-z0-9_.\-+]+)@([\da-z.\-]+)\.([a-z]{2,})$/);
-//    }
+    //checks to see if email input is valid email address format
+    function isEmail(input) {
+        return input.match(/^([a-z0-9_.\-+]+)@([\da-z.\-]+)\.([a-z]{2,})$/);
+    }
 //
 //    // checks if phone number is valid
 //    function isPhone(input) {

@@ -44,7 +44,7 @@ if (array_key_exists('save', $_POST)) {
     // map
     ReviewMapper::map($review, $data); 
     // validate
-   // $errors = ReviewValidator::validate($review); 
+   $errors = ReviewValidator::validate($review); 
   
     // validate
     if (empty($errors)) {

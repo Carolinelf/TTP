@@ -21,10 +21,7 @@ $edit = array_key_exists('id', $_GET);
         'username' => $_POST['user']['username'],
         'password' => $_POST['user']['password'],
         'email' => $_POST['user']['email']
-            
-//        'username' => filter_input(INPUT_POST, ['user']['username'], FILTER_SANITIZE_STRING),
-//        'password' => filter_input(INPUT_POST, ['user']['password'], FILTER_SANITIZE_STRING),
-//        'email' => filter_input(INPUT_POST, ['user']['email'], FILTER_SANITIZE_STRING)
+          
     );
     
 
