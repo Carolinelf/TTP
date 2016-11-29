@@ -45,10 +45,8 @@ class ReviewDao {
      */
     public function save(Review $review) {
         if ($review->getId() === null) {
-
             return $this->insert($review);
         }
-
         return $this->update($review);
     }
 

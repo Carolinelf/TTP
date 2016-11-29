@@ -89,9 +89,7 @@ class CafeDao {
      * @throws Exception
      */
     private function insert(Cafe $cafe) {
-        //$now = new DateTime();
         $cafe->setId(null);
-        //$cafe->setStatus('pending');
         $sql = '
             INSERT INTO cafe (id, name, location, overview, average_rating)
                 VALUES (:id, :name, :location, :overview, :average_rating)';
@@ -103,10 +101,7 @@ class CafeDao {
      * @throws Exception
      */
     private function update(Cafe $cafe) {
-        //   $cafe->setLastModifiedOn(new DateTime());
-        $sql = '
-  
-            UPDATE cafes SET
+        $sql = 'UPDATE cafe SET
                 id = :id,
                 name = :name,
                 location = :location,
@@ -165,10 +160,6 @@ class CafeDao {
     private static function throwDbError(array $errorInfo) {
         // TODO log error, send email, etc.
         throw new Exception('DB error [' . $errorInfo[0] . ', ' . $errorInfo[1] . ']: ' . $errorInfo[2]);
-    }
-
-    private static function formatDateTime(DateTime $date) {
-        return $date->format(DateTime::ISO8601);
     }
 
 }

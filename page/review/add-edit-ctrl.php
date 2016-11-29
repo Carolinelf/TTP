@@ -1,13 +1,15 @@
 <?php
 
-//$smt = $db->prepare('SELECT name FROM cafe');
-//$smt->execute();
-//$data = $smt->fetchAll();
+
+$dao = new CafeDao();
+$sql = "SELECT name FROM cafe";
+$result = $dao->find($sql);
+
+//$sql = new mysqli("localhost","root","root","the_perfect_pour");
+//$sqlSelect="SELECT name FROM cafe";
+//$result = $sql -> query ($sqlSelect);
 
 
-$sql = new mysqli("localhost","root","root","the_perfect_pour");
-$sqlSelect="SELECT name FROM cafe";
-$result = $sql -> query ($sqlSelect);
 
 $headTemplate = new HeadTemplate('Add/Edit | The Perfect Pour', 'Edit or add a Review');
 $coffeeTypes = ['','Long Black', 'Flat White', 'Macchiato', 'Cappuccino', 'Chemex', 'Espresso', 'Latte', 'Pour Over', 'Cold Brew', 'Affogato', 'Mochaccino' ];
@@ -23,7 +25,7 @@ if ($edit) {
     $review = new Review();
     $review->getComment();
     
-    $userId = $_GET['user_id'];
+    $userId = $_SESSION['id'];
     $review->setUserId($userId);
     $cafeId;
     $review->setCafeId($cafeId);

@@ -1,5 +1,5 @@
 <?php if (empty($reviews)): ?>
-    <p>No reviews found.</p>
+<div class="card"><p>No reviews found.</p></div>
 <?php else: ?>
         <ul class="list">
            <?php foreach ($reviews as $review): ?>
